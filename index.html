@@ -1,0 +1,43 @@
+<html>
+  <head>
+      <meta charset="utf-8">
+      <title>Physics Simulations</title>
+      <style>
+        #viewport {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          z-index: 3;
+        }
+        div{
+          position: absolute;
+          z-index: 1;
+        }
+      </style>
+      <script src="js/jquery-3.1.1.min.js"></script>
+  </head>
+  <body>
+    <canvas id="viewport" height="900" width="1500"></canvas>
+    <div class="weightlabel"></div>
+    <div class="weightlabel"></div>
+    <div class="weightlabel"></div>
+    <div class="weightlabel"></div>
+    <div class="pointmasslabel"></div>
+    <div class="pointmasslabel"></div>
+    <div class="pointmasslabel"></div>
+    <div class="pointmasslabel"></div>
+    <div class="pointmasslabel"></div>
+    <div class="pointmasslabel"></div>
+    <div class="pointmasslabel"></div>
+    <div class="spherelabel"></div>
+    <div class="spherelabel"></div>
+    <div class="ringlabel">Ring</div>
+    <div class="instructions">Press space bar to start and 'r' to reset</div>
+    <div id="acceldiv">Average acceleration of hanging mass: 0.000  m/s^2</div>
+    <div class="totalweight">Weight on string: 0</div>
+    <div id="ptmasstitle">Point Masses (in grams)</div>
+    <h2 id = "title">Moment of Inertia Goodness</h2>
+    <script src="js/physicsjs-full.min.js"></script>
+    <script src="js/phys.js"></script>
+  </body>
+</html>
