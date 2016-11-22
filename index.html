@@ -13,8 +13,35 @@
           position: absolute;
           z-index: 1;
         }
+        #poweredby{
+          margin-top: 890px;
+          margin-left:100px;
+          margin-bottom: 0px;
+        }
       </style>
       <script src="js/jquery-3.1.1.min.js"></script>
+      <script src="js/ifvisible.js"></script>
+      <script src="js/timeme.js"></script>
+      <script>
+          TimeMe.setIdleDurationInSeconds(30);
+          TimeMe.setCurrentPageName('home');
+          TimeMe.initialize();
+          console.log('man')
+          $(window).on('beforeunload',function(){
+              var timeonpage = TimeMe.getTimeOnCurrentPageInSeconds();
+              var utc = new Date().toJSON().slice(0,10);
+              var hour = new Date().getHours();
+              var min = new Date().getMinutes();
+              var currtime = hour.toString()+':'+min.toString();
+              $.ajax({
+                type: 'POST',
+                url: 'https://intense-shelf-88812.herokuapp.com/savedata',
+                data: ({date:utc,time:currtime,timespent:timeonpage}),
+                async: false
+              });
+              return;
+          });
+      </script>
   </head>
   <body>
     <canvas id="viewport" height="900" width="1500"></canvas>
@@ -37,6 +64,7 @@
     <div class="totalweight">Weight on string: 0</div>
     <div id="ptmasstitle">Point Masses (in grams)</div>
     <h2 id = "title">Moment of Inertia Goodness</h2>
+    <h4 id="poweredby">Powered by PhysicsJS</h4>
     <script src="js/physicsjs-full.min.js"></script>
     <script src="js/phys.js"></script>
   </body>
